@@ -2,11 +2,7 @@ class FauxSet
 
   include Enumerable # to take advantage of iteration methods
 
-# Create the internal hash used for storage,
-
-# with a default return value of false for absent keys.
-# Add the items from the array if one is given.
-
+# Create internal hash used for storage,
   def initialize(array=[])
     raise ArgumentError, 'New FauxSet must be given an array' unless array.class == Array
     @internal_hash = array.reduce(Hash.new(false)) do |hash, i|
@@ -14,14 +10,6 @@ class FauxSet
       hash
     end
   end
-
-  # creating an empty FauxSet by default
-
-  def [](key)
-    @internal_hash[key]
-  end
-
-  # modifying:
 
   def add(key)
     @internal_hash[key] = true
