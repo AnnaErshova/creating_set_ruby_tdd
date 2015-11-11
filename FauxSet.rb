@@ -4,7 +4,7 @@ class FauxSet
 
 # Create internal hash used for storage,
   def initialize(array=[])
-    raise ArgumentError, 'New FauxSet must be given an array' unless array.class == Array
+    raise ArgumentError, 'Initialize with an Array' unless array.class == Array
     @internal_hash = array.reduce(Hash.new(false)) do |hash, i|
       hash[i] = true
       hash
